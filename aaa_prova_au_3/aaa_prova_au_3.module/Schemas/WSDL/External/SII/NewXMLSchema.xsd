@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/NewXMLSchema"
+	xmlns:tns="http://www.example.org/NewXMLSchema"
+	elementFormDefault="qualified" xmlns:msgSII="http://www.acquirenteunico.it/schemas/2010/SII_AU/MessaggioSII">
+	<import schemaLocation="../../../../../CommonUtilsSII/CommonUtilsSII/Schemas/External/SII/PrestazioniTecniche/schemas/AE1_msgSII_v3.xsd" namespace="http://www.acquirenteunico.it/schemas/2010/SII_AU/MessaggioSII"></import>
+</schema>

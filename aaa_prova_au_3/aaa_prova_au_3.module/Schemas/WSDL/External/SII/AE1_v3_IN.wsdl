@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:srv="http://www.sii.acquirenteunico.it/AE1"
+	xmlns:msgSII="http://www.acquirenteunico.it/schemas/2010/SII_AU/MessaggioSII"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	targetNamespace="http://www.sii.acquirenteunico.it/AE1">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import
+				namespace="http://www.acquirenteunico.it/schemas/2010/SII_AU/MessaggioSII"
+				schemaLocation="../../../../../CommonUtilsSII/Schemas/External/SII/PrestazioniTecniche/schemas/AE1_msgSII_v3.xsd" />
+		</schema>
+	</wsdl:types>
+	<!-- *** Messages *** -->
+	<wsdl:message
+		name="ComunicazioneAggiornamentoDatiRcuMessaggioSII">
+		<wsdl:part name="MessaggioSII"
+			type="msgSII:ComunicazioneAggiornamentoDatiRcuMessaggioSIIType" />
+	</wsdl:message>
+	<wsdl:message
+		name="AmmissibilitaComunicazioneMessaggioSII">
+		<wsdl:part name="MessaggioSII"
+			type="msgSII:AmmissibilitaComunicazioneMessaggioSIIType" />
+	</wsdl:message>
+	<!-- *** PortTypes *** -->
+	<wsdl:portType name="AE1">
+		<wsdl:operation name="AE1.0050">
+			<wsdl:input
+				message="srv:ComunicazioneAggiornamentoDatiRcuMessaggioSII" />
+			<wsdl:output
+				message="srv:AmmissibilitaComunicazioneMessaggioSII" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<!-- *** Bindings *** -->
+	<wsdl:binding name="AE1Binding" type="srv:AE1">
+		<soap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="AE1.0050">
+			<soap:operation soapAction="AE1.0050" />
+			<wsdl:input>
+				<soap:body
+					namespace="http://www.sii.acquirenteunico.it/AE1"
+					parts="MessaggioSII" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body
+					namespace="http://www.sii.acquirenteunico.it/AE1"
+					parts="MessaggioSII" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<!-- *** Services *** -->
+	<wsdl:service name="AE1Service">
+		<wsdl:port name="AE1Port" binding="srv:AE1Binding">
+			<soap:address location="http://localhost:8080/AE1" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
